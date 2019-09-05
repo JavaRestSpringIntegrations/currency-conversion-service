@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.math.BigDecimal;
 
 //@FeignClient(name = "currency-exchange-service",url = "localhost:8000")
-@FeignClient(name = "currency-exchange-service")
+//@FeignClient(name = "currency-exchange-service")
+@FeignClient(name = "netflix-zuul-api-gateway-server")
 @RibbonClient(name = "currency-exchange-service")
 public interface CurrencyExchangeServiceProxy {
 
     // define method to talk to currency exchange service
-    @GetMapping("/currency-exchange/from/{from}/to/{to}")
+    //@GetMapping("/currency-exchange/from/{from}/to/{to}")
+    @GetMapping("/currency-exchange-service/currency-exchange/from/{from}/to/{to}")
     public CurrencyConversion retrieveExchangeValue
         (@PathVariable String from, @PathVariable String to);
 }
